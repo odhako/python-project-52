@@ -14,6 +14,7 @@ from pathlib import Path
 from django.test.runner import DiscoverRunner
 import os
 import dj_database_url
+from dotenv import load_dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,8 @@ IS_HEROKU = "DYNO" in os.environ
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ayb0=ieddkonjajsya9493d37y9&yuff$fp*k#q%3d%yh*%)o3'
+load_dotenv()
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 if 'SECRET_KEY' in os.environ:
     SECRET_KEY = os.environ["SECRET_KEY"]
