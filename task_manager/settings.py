@@ -32,8 +32,8 @@ IS_HEROKU = "DYNO" in os.environ
 load_dotenv()
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-if 'SECRET_KEY' in os.environ:
-    SECRET_KEY = os.environ["SECRET_KEY"]
+# if 'SECRET_KEY' in os.environ:
+#     SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # if not IS_HEROKU:
