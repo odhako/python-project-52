@@ -3,9 +3,17 @@ name = "hexlet-code"
 version = "0.1.0"
 description = "Task manager web application"
 authors = ["odhako <odhako@gmail.com>"]
+readme = "README.md"
+packages = [{include = "task_manager"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+Django = "^4.1.2"
+django-extensions = "^3.2.1"
+gunicorn = "^20.1.0"
+python-dotenv = "^0.21.0"
+dj-database-url = "^1.0.0"
+ipython = "^8.5.0"
 
 [tool.poetry.dev-dependencies]
 
