@@ -9,3 +9,9 @@ wsgi:
 
 push:
 	git push heroku main
+
+po:
+	poetry run django-admin makemessages -a
+
+mo:
+	poetry run django-admin compilemessages
