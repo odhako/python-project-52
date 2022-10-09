@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-07 00:22+0400\n"
+"POT-Creation-Date: 2022-10-09 22:45+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,22 +19,51 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
-#: task_manager/templates/index.html:11
+
+#: task_manager/templates/application.html:11
 msgid "Hexlet task manager"
 msgstr "Менеджер задач Хекслет"
 
-#: task_manager/templates/index.html:17
+#: task_manager/templates/application.html:17
+#: task_manager/templates/index.html:5
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/index.html:25
+#: task_manager/templates/application.html:25
 msgid "Log in"
 msgstr "Вход"
 
-#: task_manager/templates/index.html:28
+#: task_manager/templates/application.html:28
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: task_manager/templates/index.html:31
+#: task_manager/templates/application.html:31
+#: task_manager/templates/users.html:5
 msgid "Users"
 msgstr "Пользователи"
+
+#: task_manager/templates/index.html:9
+msgid "Manage your tasks like a boss"
+msgstr "Заменеджерь свои таски"
+
+#: task_manager/templates/users.html:16
+#, fuzzy
+#| msgid "Users"
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: task_manager/templates/users.html:17
+msgid "Full name"
+msgstr "Полное имя"
+
+#: task_manager/templates/users.html:18
+msgid "Created at"
+msgstr "Дата создания"
+
+#: task_manager/templates/users.html:30
+msgid "Edit"
+msgstr "Изменить"
+
+#: task_manager/templates/users.html:32
+msgid "Delete"
+msgstr "Удалить"
