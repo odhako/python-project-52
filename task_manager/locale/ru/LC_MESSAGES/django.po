@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-16 12:34+0000\n"
+"POT-Creation-Date: 2022-10-16 13:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,12 @@ msgstr "Пользователи"
 #| msgid "Delete"
 msgctxt "Delete user page header"
 msgid "Delete user"
-msgstr "Удалить"
+msgstr "Удаление пользователя"
+
+#: task_manager/templates/delete_user.html:10
+#, python-format
+msgid "Are you sure you want to delete %(first_name)s %(last_name)s?"
+msgstr "Вы уверены, что хотите удалить %(first_name)s %(last_name)s?"
 
 #: task_manager/templates/delete_user.html:15
 msgctxt "Delete user page button"
@@ -115,17 +120,7 @@ msgstr "Изменить"
 #, fuzzy
 #| msgid "User successfully registered"
 msgid "User successfully deleted"
-msgstr "Пользователь успешно изменён"
-
-#, fuzzy, python-format
-#~| msgid ""
-#~| "Are you sure you want to delete \"%(object.first_name)s "
-#~| "%(object.last_name)s\"?"
-#~ msgid ""
-#~ "Are you sure you want to delete %(object.first_name)s "
-#~ "%(object.last_name)s?"
-#~ msgstr ""
-#~ "Вы уверены, что хотите удалить %(object.first_name)s %(object.last_name)s?"
+msgstr "Пользователь успешно удалён"
 
 #, fuzzy
 #~| msgid "Full name"
