@@ -11,10 +11,10 @@ push:
 	git push heroku main
 
 po:
-	poetry run django-admin makemessages -l ru
+	poetry run python manage.py makemessages -l ru
 
 mo:
-	poetry run django-admin compilemessages -f
+	poetry run python manage.py compilemessages -f
 
 shell:
 	poetry run python manage.py shell_plus

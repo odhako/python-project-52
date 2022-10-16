@@ -1,0 +1,28 @@
+{% extends 'application.html' %}
+{% load i18n %}
+
+{% block header %}
+{% translate 'Registration' %}
+{% endblock %}
+
+{% block content %}
+
+{% translate 'Sign up' context 'Registration form button' as sign_up_button_text %}
+
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+            {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="{{ sign_up_button_text }}">
+    </div>
+</form>
+
+{% endblock %}

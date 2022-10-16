@@ -25,7 +25,7 @@
               <a class="nav-link" href="#">{% translate "Log in" %}</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">{% translate "Sign up" %}</a>
+              <a class="nav-link" href="/users/create/">{% translate "Sign up" %}</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="/users/">{% translate "Users" %}</a>
@@ -34,7 +34,17 @@
         </div>
     </nav>
     <div class="container mt-3">
-      <h1>
+      
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">×</button>
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <h1 class="my-4">
         {% block header %}
         {% endblock %}
       </h1>
