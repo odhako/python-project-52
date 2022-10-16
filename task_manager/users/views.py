@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.views.generic import TemplateView, ListView
-from django.views.generic.edit import FormView, CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView as BasicLoginView
 from django.shortcuts import redirect
 from .forms import UserRegistrationForm
@@ -37,8 +37,15 @@ class UpdateUserView(SuccessMessageMixin, UpdateView):
     form_class = UserRegistrationForm
     success_url = '/'
     success_message = _("User successfully updated")
-    # rus: Пользователь успешно изменён
     extra_context = {
         'header': _('Update user'),
         'button': _('Update'),
     }
+
+
+class DeleteUserView(SuccessMessageMixin, DeleteView):
+    model = User
+    template_name = 'delete_user.html'
+    success_url = '/users/'
+    success_message = _('User successfully deleted')
+    # rus: Пользователь успешно удалён

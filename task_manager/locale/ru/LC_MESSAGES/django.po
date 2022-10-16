@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-16 09:48+0000\n"
+"POT-Creation-Date: 2022-10-16 12:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,6 +41,18 @@ msgstr "Регистрация"
 #: task_manager/templates/users.html:5
 msgid "Users"
 msgstr "Пользователи"
+
+#: task_manager/templates/delete_user.html:5
+#, fuzzy
+#| msgid "Delete"
+msgctxt "Delete user page header"
+msgid "Delete user"
+msgstr "Удалить"
+
+#: task_manager/templates/delete_user.html:15
+msgctxt "Delete user page button"
+msgid "Yes, delete"
+msgstr "Да, удалить"
 
 #: task_manager/templates/index.html:9
 msgid "Manage your tasks like a boss"
@@ -91,13 +103,39 @@ msgstr "Зарегистрировать"
 msgid "User successfully updated"
 msgstr "Пользователь успешно изменён"
 
-#: task_manager/users/views.py:42
+#: task_manager/users/views.py:41
 msgid "Update user"
 msgstr "Изменение пользователя"
 
-#: task_manager/users/views.py:43
+#: task_manager/users/views.py:42
 msgid "Update"
 msgstr "Изменить"
+
+#: task_manager/users/views.py:50
+#, fuzzy
+#| msgid "User successfully registered"
+msgid "User successfully deleted"
+msgstr "Пользователь успешно изменён"
+
+#, fuzzy, python-format
+#~| msgid ""
+#~| "Are you sure you want to delete \"%(object.first_name)s "
+#~| "%(object.last_name)s\"?"
+#~ msgid ""
+#~ "Are you sure you want to delete %(object.first_name)s "
+#~ "%(object.last_name)s?"
+#~ msgstr ""
+#~ "Вы уверены, что хотите удалить %(object.first_name)s %(object.last_name)s?"
+
+#, fuzzy
+#~| msgid "Full name"
+#~ msgid "First name"
+#~ msgstr "Имя"
+
+#, fuzzy
+#~| msgid "Full name"
+#~ msgid "Last name"
+#~ msgstr "Фамилия"
 
 #, fuzzy
 #~| msgid "Registration"
@@ -109,12 +147,6 @@ msgstr "Изменить"
 #~ msgctxt "Registration form button"
 #~ msgid "Sign up"
 #~ msgstr "Зарегистрировать"
-
-#, fuzzy
-#~| msgid "Full name"
-#~ msgctxt "Registration form"
-#~ msgid "First name"
-#~ msgstr "Полное имя"
 
 #, fuzzy
 #~| msgid "Users"

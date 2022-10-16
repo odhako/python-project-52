@@ -1,0 +1,19 @@
+{% extends 'application.html' %}
+{% load i18n %}
+
+{% block header %}
+{% translate "Delete user" context "Delete user page header" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <input class="btn btn-danger" type="submit" value="{% translate 'Yes, delete' context 'Delete user page button' %}">
+    </div>
+</form>
+
+{% endblock %}
