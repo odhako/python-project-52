@@ -2,12 +2,10 @@
 {% load i18n %}
 
 {% block header %}
-{% translate 'Registration' %}
+{{ header }}
 {% endblock %}
 
 {% block content %}
-
-{% translate 'Sign up' context 'Registration form button' as sign_up_button_text %}
 
 <form method="post">
     {% csrf_token %}
@@ -21,7 +19,7 @@
         </div>
     {% endfor %}
     <div class="form-group">
-        <input class="btn btn-primary" type="submit" value="{{ sign_up_button_text }}">
+        <input class="btn btn-primary" type="submit" value="{{ button }}">
     </div>
 </form>
 

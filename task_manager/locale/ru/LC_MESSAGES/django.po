@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-15 10:55+0000\n"
+"POT-Creation-Date: 2022-10-16 09:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,50 +38,77 @@ msgid "Sign up"
 msgstr "Регистрация"
 
 #: task_manager/templates/application.html:31
-#: task_manager/templates/users.html:15
+#: task_manager/templates/users.html:5
 msgid "Users"
 msgstr "Пользователи"
-
-#: task_manager/templates/create_user.html:5
-msgid "Registration"
-msgstr "Регистрация"
-
-#: task_manager/templates/create_user.html:10
-#, fuzzy
-#| msgid "Sign up"
-msgctxt "Registration form button"
-msgid "Sign up"
-msgstr "Регистрация"
 
 #: task_manager/templates/index.html:9
 msgid "Manage your tasks like a boss"
 msgstr "Заменеджерь свои таски"
 
-#: task_manager/templates/users.html:25
+#: task_manager/templates/users.html:14
 #, fuzzy
 #| msgid "Users"
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: task_manager/templates/users.html:26
+#: task_manager/templates/users.html:15
 msgid "Full name"
 msgstr "Полное имя"
 
-#: task_manager/templates/users.html:27
+#: task_manager/templates/users.html:16
 msgid "Created at"
 msgstr "Дата создания"
 
-#: task_manager/templates/users.html:39
+#: task_manager/templates/users.html:28
 msgid "Edit"
 msgstr "Изменить"
 
-#: task_manager/templates/users.html:41
+#: task_manager/templates/users.html:30
 msgid "Delete"
 msgstr "Удалить"
 
-#: task_manager/users/views.py:26
+#: task_manager/users/views.py:27
 msgid "User successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
+
+#: task_manager/users/views.py:29
+#, fuzzy
+#| msgid "Registration"
+msgid "Registration"
+msgstr "Регистрация"
+
+#: task_manager/users/views.py:30
+#, fuzzy
+#| msgid "Sign up"
+msgctxt "sign up button"
+msgid "Sign up"
+msgstr "Зарегистрировать"
+
+#: task_manager/users/views.py:39
+#, fuzzy
+#| msgid "User successfully registered"
+msgid "User successfully updated"
+msgstr "Пользователь успешно изменён"
+
+#: task_manager/users/views.py:42
+msgid "Update user"
+msgstr "Изменение пользователя"
+
+#: task_manager/users/views.py:43
+msgid "Update"
+msgstr "Изменить"
+
+#, fuzzy
+#~| msgid "Registration"
+#~ msgid "Registration page button"
+#~ msgstr "Зарегистрировать"
+
+#, fuzzy
+#~| msgid "Sign up"
+#~ msgctxt "Registration form button"
+#~ msgid "Sign up"
+#~ msgstr "Зарегистрировать"
 
 #, fuzzy
 #~| msgid "Full name"
