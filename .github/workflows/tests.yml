@@ -27,13 +27,12 @@ jobs:
         GITHUB_ACTION_RUNNING: True
       run: |
         python manage.py test
-    - name: Test & publish code coverage
+        coverage run --source='.' manage.py test
+    - name: Publish code coverage
       uses: paambaati/codeclimate-action@v3.1.1
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         GITHUB_ACTION_RUNNING: True
       with:
-        coverageCommand: |
-          coverage run --source='.' manage.py test
-          coverage xml
+        coverageCommand: coverage xml
