@@ -18,8 +18,10 @@ from django.urls import path
 from task_manager.users import views
 
 urlpatterns = [
-    path('', views.UsersView.as_view()),
-    path('create/', views.CreateUserView.as_view()),
-    path('<int:pk>/update/', views.UpdateUserView.as_view()),
-    path('<int:pk>/delete/', views.DeleteUserView.as_view()),
+    path('users/', views.UsersView.as_view()),
+    path('users/create/', views.CreateUserView.as_view()),
+    path('users/<int:pk>/update/', views.UpdateUserView.as_view()),
+    path('users/<int:pk>/delete/', views.DeleteUserView.as_view()),
+    path('login/', views.LoginUserView.as_view()),
+    path('logout/', views.LogoutUserView.as_view()),
 ]

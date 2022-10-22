@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 
@@ -19,50 +19,6 @@ class PlaceholderMixin:
 
 
 class UserRegistrationForm(NoLabelSuffixMixin, PlaceholderMixin, UserCreationForm):
-    #
-    # label_suffix = ''
-    # # email = forms.EmailField(required=True)
-    # first_name = forms.CharField(
-    #     label=_("First name"),
-    #     max_length=150,
-    #     # label_suffix='',
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         'class': 'form-control',
-    #         'required': '',
-    #         'placeholder': _("First name"),
-    #     })
-    # )
-    #
-    # last_name = forms.CharField(
-    #     label=_("Last name"),
-    #     max_length=150,
-    #     label_suffix='',
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         'class': 'form-control',
-    #         'required': '',
-    #         'placeholder': _("Last name"),
-    #     })
-    # )
-    #
-    # username = forms.CharField(
-    #     label=_("Username"),
-    #     max_length=150,
-    #     label_suffix='',
-    #     required=True,
-    #     help_text=_(
-    #         "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-    #     ),
-    #     error_messages={
-    #         "unique": _("A user with that username already exists."),
-    #     },
-    #     widget=forms.TextInput(attrs={
-    #         'class': 'form-control',
-    #         'required': '',
-    #         'placeholder': _("Username"),
-    #     })
-    # )
 
     class Meta:
         model = User
@@ -76,6 +32,16 @@ class UserRegistrationForm(NoLabelSuffixMixin, PlaceholderMixin, UserCreationFor
 
     def __init__(self, *args, **kwargs):
         super(UserRegistrationForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            if field.widget.attrs.get('class'):
+                field.widget.attrs['class'] += ' form-control'
+            else:
+                field.widget.attrs['class'] = 'form-control'
+
+
+class UserLoginForm(NoLabelSuffixMixin, PlaceholderMixin, AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(UserLoginForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             if field.widget.attrs.get('class'):
                 field.widget.attrs['class'] += ' form-control'

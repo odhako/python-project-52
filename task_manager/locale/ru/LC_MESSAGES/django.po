@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-16 13:00+0000\n"
+"POT-Creation-Date: 2022-10-21 11:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,15 +29,21 @@ msgstr "Менеджер задач Хекслет"
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/application.html:25
+#: task_manager/templates/application.html:26
+#, fuzzy
+#| msgid "Log in"
+msgid "Log out"
+msgstr "Выход"
+
+#: task_manager/templates/application.html:30
 msgid "Log in"
 msgstr "Вход"
 
-#: task_manager/templates/application.html:28
+#: task_manager/templates/application.html:33
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: task_manager/templates/application.html:31
+#: task_manager/templates/application.html:37
 #: task_manager/templates/users.html:5
 msgid "Users"
 msgstr "Пользователи"
@@ -85,42 +91,72 @@ msgstr "Изменить"
 msgid "Delete"
 msgstr "Удалить"
 
-#: task_manager/users/views.py:27
+#: task_manager/users/views.py:16
+msgid "You don't have rights to edit other users"
+msgstr "У вас нет прав для изменения другого пользователя."
+
+#: task_manager/users/views.py:17
+msgid "You are not authorised! Please log in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
+
+#: task_manager/users/views.py:54
 msgid "User successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:29
+#: task_manager/users/views.py:56
 #, fuzzy
 #| msgid "Registration"
 msgid "Registration"
 msgstr "Регистрация"
 
-#: task_manager/users/views.py:30
+#: task_manager/users/views.py:57
 #, fuzzy
 #| msgid "Sign up"
 msgctxt "sign up button"
 msgid "Sign up"
 msgstr "Зарегистрировать"
 
-#: task_manager/users/views.py:39
+#: task_manager/users/views.py:66
 #, fuzzy
 #| msgid "User successfully registered"
 msgid "User successfully updated"
 msgstr "Пользователь успешно изменён"
 
-#: task_manager/users/views.py:41
+#: task_manager/users/views.py:68
 msgid "Update user"
 msgstr "Изменение пользователя"
 
-#: task_manager/users/views.py:42
+#: task_manager/users/views.py:69
 msgid "Update"
 msgstr "Изменить"
 
-#: task_manager/users/views.py:50
+#: task_manager/users/views.py:77
 #, fuzzy
 #| msgid "User successfully registered"
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удалён"
+
+#: task_manager/users/views.py:85
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+#: task_manager/users/views.py:87
+#, fuzzy
+#| msgid "Log in"
+msgctxt "Login page header"
+msgid "Log in"
+msgstr "Вход"
+
+#: task_manager/users/views.py:88
+#, fuzzy
+#| msgid "Log in"
+msgctxt "Login page button"
+msgid "Log in"
+msgstr "Вход"
+
+#: task_manager/users/views.py:97
+msgid "You are logged out"
+msgstr "Вы разлогинены"
 
 #, fuzzy
 #~| msgid "Full name"

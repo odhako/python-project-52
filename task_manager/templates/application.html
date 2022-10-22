@@ -21,12 +21,18 @@
       
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
             <li class="nav-item active">
-              <a class="nav-link" href="#">{% translate "Log in" %}</a>
+              <a class="nav-link" href="/logout/">{% translate "Log out" %}</a>
+            </li>
+            {% else %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/login/">{% translate "Log in" %}</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="/users/create/">{% translate "Sign up" %}</a>
             </li>
+            {% endif %}
             <li class="nav-item active">
               <a class="nav-link" href="/users/">{% translate "Users" %}</a>
             </li>
@@ -37,7 +43,7 @@
       
       {% if messages %}
         {% for message in messages %}
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="close">×</button>
             {{ message }}
           </div>
