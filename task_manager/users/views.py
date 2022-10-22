@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
-from .forms import UserRegistrationForm, UserLoginForm
+from .forms import UserForm, UserLoginForm
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
@@ -49,7 +49,7 @@ class UsersView(ListView):
 
 class CreateUserView(SuccessMessageMixin, CreateView):
     template_name = 'create_user.html'
-    form_class = UserRegistrationForm
+    form_class = UserForm
     success_url = '/'
     success_message = _("User successfully registered")
     extra_context = {
@@ -61,7 +61,7 @@ class CreateUserView(SuccessMessageMixin, CreateView):
 class UpdateUserView(BasicPermissionsMixin, SuccessMessageMixin, UpdateView):
     model = User
     template_name = 'create_user.html'
-    form_class = UserRegistrationForm
+    form_class = UserForm
     success_url = '/'
     success_message = _("User successfully updated")
     extra_context = {

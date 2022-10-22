@@ -18,8 +18,19 @@ class PlaceholderMixin:
             field.widget.attrs.update({'placeholder': field.label})
 
 
-class UserRegistrationForm(NoLabelSuffixMixin, PlaceholderMixin, UserCreationForm):
+class FormControlMixin:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            if field.widget.attrs.get('class'):
+                field.widget.attrs['class'] += ' form-control'
+            else:
+                field.widget.attrs['class'] = 'form-control'
 
+
+class UserForm(
+    FormControlMixin, NoLabelSuffixMixin, PlaceholderMixin, UserCreationForm
+):
     class Meta:
         model = User
         fields = (
@@ -30,20 +41,8 @@ class UserRegistrationForm(NoLabelSuffixMixin, PlaceholderMixin, UserCreationFor
             'password2',
         )
 
-    def __init__(self, *args, **kwargs):
-        super(UserRegistrationForm, self).__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            if field.widget.attrs.get('class'):
-                field.widget.attrs['class'] += ' form-control'
-            else:
-                field.widget.attrs['class'] = 'form-control'
 
-
-class UserLoginForm(NoLabelSuffixMixin, PlaceholderMixin, AuthenticationForm):
-    def __init__(self, *args, **kwargs):
-        super(UserLoginForm, self).__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            if field.widget.attrs.get('class'):
-                field.widget.attrs['class'] += ' form-control'
-            else:
-                field.widget.attrs['class'] = 'form-control'
+class UserLoginForm(
+    FormControlMixin, NoLabelSuffixMixin, PlaceholderMixin, AuthenticationForm
+):
+    pass
