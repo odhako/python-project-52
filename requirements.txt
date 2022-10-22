@@ -5,6 +5,7 @@ backcall==0.2.0; python_version >= "3.8"
 backports.zoneinfo==0.2.1; python_version < "3.9" and python_version >= "3.8"
 beautifulsoup4==4.11.1; python_full_version >= "3.6.0" and python_version >= "3.7"
 colorama==0.4.5; python_version >= "3.8" and python_full_version < "3.0.0" and sys_platform == "win32" or sys_platform == "win32" and python_version >= "3.8" and python_full_version >= "3.5.0"
+coverage==6.5.0; python_version >= "3.7"
 decorator==5.1.1; python_version >= "3.8"
 dj-database-url==1.0.0
 django-bootstrap4==22.2; python_version >= "3.7"

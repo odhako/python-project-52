@@ -169,8 +169,8 @@ class HerokuDiscoverRunner(DiscoverRunner):
 
 
 # Use HerokuDiscoverRunner on Heroku CI
-if "CI" in os.environ:
-    TEST_RUNNER = "gettingstarted.settings.HerokuDiscoverRunner"
+# if "CI" in os.environ:
+#     TEST_RUNNER = "gettingstarted.settings.HerokuDiscoverRunner"
 
 
 # Default primary key field type
