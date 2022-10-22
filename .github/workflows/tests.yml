@@ -26,7 +26,6 @@ jobs:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         GITHUB_ACTION_RUNNING: True
       run: |
-        python manage.py test
         coverage run --source='.' manage.py test
     - name: Publish code coverage
       uses: paambaati/codeclimate-action@v3.1.1
