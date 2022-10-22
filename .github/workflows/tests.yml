@@ -26,11 +26,11 @@ jobs:
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
-        poetry run python manage.py test
+        poetry run python manage.py test task_manager
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v3.1.1
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
       with:
-        coverageCommand: poetry run coverage xml --source='.' manage.py test
+        coverageCommand: poetry run coverage xml --source='.' manage.py test task_manager
