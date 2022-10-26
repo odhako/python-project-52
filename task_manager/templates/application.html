@@ -20,7 +20,17 @@
         </button>
       
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-          <ul class="navbar-nav ml-auto">
+          <div class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/users/">{% translate "Users" %}</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/statuses/">{% translate "Statuses" context "Navbar link" %}</a>
+            </li>
+            {% endif %}
+          </div>
+          <ul class="navbar-nav">
             {% if user.is_authenticated %}
             <li class="nav-item active">
               <a class="nav-link" href="/logout/">{% translate "Log out" %}</a>
@@ -33,9 +43,6 @@
               <a class="nav-link" href="/users/create/">{% translate "Sign up" %}</a>
             </li>
             {% endif %}
-            <li class="nav-item active">
-              <a class="nav-link" href="/users/">{% translate "Users" %}</a>
-            </li>
           </ul>
         </div>
     </nav>
