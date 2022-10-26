@@ -183,10 +183,11 @@ SHELL_PLUS = "ipython"
 # print SQL queries in shell_plus
 SHELL_PLUS_PRINT_SQL = True
 
-# BOOTSTRAP4 = {
-#     "theme_url": BASE_DIR / 'task_manager/static/starter-template.css'
-# }
 
 BOOTSTRAP4 = {
-    "theme_url": 'https://getbootstrap.com/docs/4.5/examples/starter-template/starter-template.css'
+    "theme_url": '/static/starter-template.css'
 }
+
+# BOOTSTRAP4 = {
+#     "theme_url": 'https://getbootstrap.com/docs/4.5/examples/starter-template/starter-template.css'
+# }
