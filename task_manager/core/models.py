@@ -1,9 +1,6 @@
 from django.db import models
 from django.utils.translation import pgettext as _
-
-
-class TimeStampedModel(models.Model):
-    created_on = models.DateTimeField(auto_now_add=True)
+from django_extensions.db.models import TimeStampedModel
 
 
 class Status(TimeStampedModel):
@@ -11,3 +8,6 @@ class Status(TimeStampedModel):
                             max_length=100,
                             unique=True,
                             null=False)
+
+    def __str__(self):
+        return self.name

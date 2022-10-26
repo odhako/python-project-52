@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class TaskManagerConfig(AppConfig):
+class CoreConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'task_manager'
+    name = 'task_manager.core'
