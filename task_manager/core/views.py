@@ -3,17 +3,34 @@ from django.views.generic import TemplateView
 from .models import Status
 from .forms import StatusForm
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+
 from django.utils.translation import pgettext
 from django.utils.translation import gettext as _
 
 
-class StatusesList(ListView):
+class LoginRequiredMixin(LoginRequiredMixin):
+    login_url = '/login/'
+    login_required_message = _("You are not authorised! Please log in.")
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            messages.add_message(request,
+                                 messages.WARNING,
+                                 self.login_required_message)
+            return self.handle_no_permission()
+        else:
+            return super().dispatch(request, *args, **kwargs)
+
+
+class StatusesList(LoginRequiredMixin, ListView):
     template_name = 'statuses_list.html'
     context_object_name = 'statuses'
     queryset = Status.objects.only('id', 'name', 'created',)
 
 
-class CreateStatus(SuccessMessageMixin, CreateView):
+class CreateStatus(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     template_name = 'create_user.html'
     form_class = StatusForm
     success_url = '/statuses/'
@@ -27,7 +44,7 @@ class CreateStatus(SuccessMessageMixin, CreateView):
     }
 
 
-class UpdateStatus(SuccessMessageMixin, UpdateView):
+class UpdateStatus(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     template_name = 'create_user.html'
     form_class = StatusForm
     model = Status
@@ -42,7 +59,7 @@ class UpdateStatus(SuccessMessageMixin, UpdateView):
     }
 
 
-class DeleteStatus(SuccessMessageMixin, DeleteView):
+class DeleteStatus(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     template_name = 'delete.html'
     model = Status
     success_url = '/statuses/'
