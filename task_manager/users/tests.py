@@ -14,7 +14,7 @@ class BasicTest(TestCase):
 
 class RegistrationTest(TestCase):
 
-    def setUp(self):
+    def test_crud_users(self):
         self.client.post(
             '/users/create/',
             data={
@@ -37,12 +37,10 @@ class RegistrationTest(TestCase):
             }
         )
 
-    def test_sign_up(self):
         users = get_user_model().objects.all()
         self.assertEqual(users.count(), 2)
         print('Sign up OK')
 
-    def test_login(self):
         self.client.post(
             '/login/',
             data={'username': 'username1', 'password': 'password1'}
@@ -50,8 +48,6 @@ class RegistrationTest(TestCase):
         self.assertEqual(get_user(self.client).username, 'username1')
         print('Login OK')
 
-    def test_update_user(self):
-        self.client.login(username='username1', password='password1')
         users = get_user_model().objects.filter(username='username1')
         user_id = users[0].id
         self.client.post(
@@ -72,13 +68,20 @@ class RegistrationTest(TestCase):
 
         print('Update user OK')
 
-    def test_delete_user(self):
-        self.client.login(username='username1', password='password1')
-        users = get_user_model().objects.filter(username='username1')
-        user_id = users[0].id
+        self.assertEqual(get_user(self.client).username, '')
+        print('Logout after update OK')
+
         self.client.post(
-            f'/users/{user_id}/delete/'
+            '/login/',
+            data={'username': 'diehard', 'password': 'Yippee Ki-Yay'}
         )
+        self.assertEqual(get_user(self.client).username, 'diehard')
+        print('Login after update OK')
+
+        users = get_user_model().objects.filter(username='diehard')
+        user_id = users[0].id
+
+        self.client.post(f'/users/{user_id}/delete/')
         users = get_user_model().objects.all()
         self.assertEqual(users.count(), 1)
         print('Delete user OK')
