@@ -22,4 +22,9 @@ urlpatterns = [
     path('statuses/create/', views.CreateStatus.as_view()),
     path('statuses/<int:pk>/update/', views.UpdateStatus.as_view()),
     path('statuses/<int:pk>/delete/', views.DeleteStatus.as_view()),
+    path('tasks/', views.TasksList.as_view()),
+    path('tasks/create/', views.CreateTask.as_view()),
+    path('tasks/<int:pk>/update/', views.UpdateTask.as_view()),
+    path('tasks/<int:pk>/delete/', views.DeleteTask.as_view()),
+    path('tasks/<int:pk>/', views.TaskView.as_view()),
 ]

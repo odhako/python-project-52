@@ -48,7 +48,7 @@ class UsersView(ListView):
 
 
 class CreateUserView(SuccessMessageMixin, CreateView):
-    template_name = 'create_user.html'
+    template_name = 'create.html'
     form_class = UserForm
     success_url = '/'
     success_message = _("User successfully registered")
@@ -60,7 +60,7 @@ class CreateUserView(SuccessMessageMixin, CreateView):
 
 class UpdateUserView(BasicPermissionsMixin, SuccessMessageMixin, UpdateView):
     model = User
-    template_name = 'create_user.html'
+    template_name = 'create.html'
     form_class = UserForm
     success_url = '/'
     success_message = _("User successfully updated")

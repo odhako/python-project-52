@@ -1,12 +1,13 @@
-from .models import Status
+from .models import Status, Task
 from django.forms import ModelForm
+from django import forms
 
 
 class NoLabelSuffixMixin:
     def __init__(self, *args, **kwargs):
         if 'label_suffix' not in kwargs:
             kwargs['label_suffix'] = ''
-        super(NoLabelSuffixMixin, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
 
 class PlaceholderMixin:
@@ -28,12 +29,20 @@ class FormControlMixin:
                 field.widget.attrs['class'] = 'form-control'
 
 
-class StatusForm(
-    NoLabelSuffixMixin,
-    PlaceholderMixin,
-    FormControlMixin,
-    ModelForm,
-):
+class StatusForm(NoLabelSuffixMixin,
+                 PlaceholderMixin,
+                 FormControlMixin,
+                 ModelForm):
     class Meta:
         model = Status
-        fields = ['name',]
+        fields = ['name', ]
+
+
+class TaskForm(NoLabelSuffixMixin,
+               PlaceholderMixin,
+               FormControlMixin,
+               ModelForm):
+
+    class Meta:
+        model = Task
+        fields = ['name', 'description', 'status', 'executor', ]
