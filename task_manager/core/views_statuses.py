@@ -1,6 +1,8 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _, pgettext
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.shortcuts import redirect
+from django.contrib import messages
 
 from task_manager.core.forms import StatusForm
 from task_manager.core.models import Status
@@ -41,7 +43,18 @@ class DeleteStatus(SuccessMessageMixin, LoginRequired, DeleteView):
     model = Status
     success_url = '/statuses/'
     success_message = _('Status successfully deleted')
+    cant_delete_message = _("Can't delete status because it is in use")
     extra_context = {
         'header': pgettext('Delete status page header', 'Delete status'),
         'button': pgettext('Delete status button', 'Yes, delete'),
     }
+
+    def post(self, request, *args, **kwargs):
+        status = Status.objects.get(id=kwargs['pk'])
+        if status.task_set.all():
+            messages.add_message(request,
+                                 messages.WARNING,
+                                 self.cant_delete_message)
+            return redirect('/tasks/')
+        else:
+            return super().post(self, request, *args, **kwargs)
