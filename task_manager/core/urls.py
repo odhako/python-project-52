@@ -15,16 +15,18 @@ Including another URLconf
 """
 
 from django.urls import path
-from task_manager.core import views
+
+import task_manager.core.views_statuses
+import task_manager.core.views_tasks
 
 urlpatterns = [
-    path('statuses/', views.StatusesList.as_view()),
-    path('statuses/create/', views.CreateStatus.as_view()),
-    path('statuses/<int:pk>/update/', views.UpdateStatus.as_view()),
-    path('statuses/<int:pk>/delete/', views.DeleteStatus.as_view()),
-    path('tasks/', views.TasksList.as_view()),
-    path('tasks/create/', views.CreateTask.as_view()),
-    path('tasks/<int:pk>/update/', views.UpdateTask.as_view()),
-    path('tasks/<int:pk>/delete/', views.DeleteTask.as_view()),
-    path('tasks/<int:pk>/', views.TaskView.as_view()),
+    path('statuses/', task_manager.core.views_statuses.StatusesList.as_view()),
+    path('statuses/create/', task_manager.core.views_statuses.CreateStatus.as_view()),
+    path('statuses/<int:pk>/update/', task_manager.core.views_statuses.UpdateStatus.as_view()),
+    path('statuses/<int:pk>/delete/', task_manager.core.views_statuses.DeleteStatus.as_view()),
+    path('tasks/', task_manager.core.views_tasks.TasksList.as_view()),
+    path('tasks/create/', task_manager.core.views_tasks.CreateTask.as_view()),
+    path('tasks/<int:pk>/update/', task_manager.core.views_tasks.UpdateTask.as_view()),
+    path('tasks/<int:pk>/delete/', task_manager.core.views_tasks.DeleteTask.as_view()),
+    path('tasks/<int:pk>/', task_manager.core.views_tasks.TaskView.as_view()),
 ]
