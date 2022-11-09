@@ -22,12 +22,9 @@ class CreateTask(SuccessMessageMixin, LoginRequired, CreateView):
     form_class = TaskForm
     success_url = '/tasks/'
     success_message = _("Task successfully created")
-    # rus: Задача успешно создана
     extra_context = {
         'header': pgettext('Create task page header', 'Create task'),
-        # rus: Создать задачу
         'button': pgettext('Create task button', 'Create'),
-        # rus: Создать
     }
 
     def form_valid(self, form):
@@ -41,12 +38,9 @@ class UpdateTask(SuccessMessageMixin, LoginRequired, UpdateView):
     model = Task
     success_url = '/tasks/'
     success_message = _("Task successfully updated")
-    # rus: Задача успешно изменена
     extra_context = {
         'header': pgettext('Update task page header', 'Update task'),
-        # rus: Изменение задачи
         'button': pgettext('Update task button', 'Update'),
-        # rus: Изменить
     }
 
 
@@ -56,12 +50,9 @@ class DeleteTask(SuccessMessageMixin, LoginRequired, DeleteView):
     success_url = '/tasks/'
     success_message = _('Task successfully deleted')
     permission_denied_message = _("Only author of the task can delete it")
-    # rus: Задача успешно удалена
     extra_context = {
         'header': pgettext('Delete task page header', 'Delete task'),
-        # rus: Удаление задачи
         'button': pgettext('Delete task button', 'Yes, delete'),
-        # rus: Да, удалить
     }
 
     def get(self, request, *args, **kwargs):

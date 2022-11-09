@@ -18,12 +18,9 @@ class CreateStatus(SuccessMessageMixin, LoginRequired, CreateView):
     form_class = StatusForm
     success_url = '/statuses/'
     success_message = _("Status successfully created")
-    # rus: Статус успешно создан
     extra_context = {
         'header': pgettext('Create status page header', 'Create status'),
-        # rus: Создать статус
         'button': pgettext('Create status button', 'Create'),
-        # rus: Создать
     }
 
 
@@ -33,12 +30,9 @@ class UpdateStatus(SuccessMessageMixin, LoginRequired, UpdateView):
     model = Status
     success_url = '/statuses/'
     success_message = _("Status successfully updated")
-    # rus: Статус успешно изменён
     extra_context = {
         'header': pgettext('Update status page header', 'Update status'),
-        # rus: Изменение статуса
         'button': pgettext('Update status button', 'Update'),
-        # rus: Изменить
     }
 
 
@@ -47,10 +41,7 @@ class DeleteStatus(SuccessMessageMixin, LoginRequired, DeleteView):
     model = Status
     success_url = '/statuses/'
     success_message = _('Status successfully deleted')
-    # rus: Статус успешно удалён
     extra_context = {
         'header': pgettext('Delete status page header', 'Delete status'),
-        # rus: Удаление статуса
         'button': pgettext('Delete status button', 'Yes, delete'),
-        # rus: Да, удалить
     }
