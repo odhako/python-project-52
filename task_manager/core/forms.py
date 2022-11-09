@@ -1,4 +1,4 @@
-from .models import Status, Task
+from .models import Status, Task, Label
 from django.forms import ModelForm
 from django import forms
 
@@ -46,3 +46,13 @@ class TaskForm(NoLabelSuffixMixin,
     class Meta:
         model = Task
         fields = ['name', 'description', 'status', 'executor', ]
+
+
+class LabelForm(NoLabelSuffixMixin,
+                PlaceholderMixin,
+                FormControlMixin,
+                ModelForm):
+
+    class Meta:
+        model = Label
+        fields = ['name', ]

@@ -42,3 +42,15 @@ class Task(TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+
+class Label(TimeStampedModel):
+    name = models.CharField(verbose_name=_('Name'),
+                            max_length=100,
+                            unique=True,
+                            null=False)
+
+    tasks = models.ManyToManyField(Task)
+
+    def __str__(self):
+        return self.name
