@@ -9,6 +9,24 @@
 
 <a class="nav-link" href="/tasks/create/">{% translate 'Create task' context 'Link to create task' %}</a>
 
+<div class="card mb-3">
+    <div class="card-body bg-light">
+        <form class="form-inline center" method="get">
+            {% for field in task_filter %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    <div class="ml-2 mr-3">
+                        {{ field }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="">
+                <input class="btn btn-primary" type="submit" value="Button">
+            </div>
+        </form>
+    </div>
+</div>
+
 <table class="table table-striped">
     <thead>
         <tr>

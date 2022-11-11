@@ -5,7 +5,7 @@ from django.utils.translation import gettext as _, pgettext
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 
-from task_manager.core.forms import TaskForm
+from task_manager.core.forms import TaskForm, TaskFilter
 from task_manager.core.models import Task
 from task_manager.core.views import LoginRequired
 
@@ -15,6 +15,7 @@ class TasksList(LoginRequired, ListView):
     context_object_name = 'tasks'
     object_list = Task.objects.only('id', 'name', 'status', 'author',
                                     'executor', 'created')
+    extra_context = {'task_filter': TaskFilter()}
 
     def get(self, request, *args, **kwargs):
 
