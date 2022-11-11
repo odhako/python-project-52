@@ -13,8 +13,25 @@ from task_manager.core.views import LoginRequired
 class TasksList(LoginRequired, ListView):
     template_name = 'tasks_list.html'
     context_object_name = 'tasks'
-    queryset = Task.objects.only('id', 'name', 'status', 'author',
-                                 'executor', 'created')
+    object_list = Task.objects.only('id', 'name', 'status', 'author',
+                                    'executor', 'created')
+
+    def get(self, request, *args, **kwargs):
+
+        if request.GET:
+            for key, value in request.GET.items():
+                print(key, value)
+            q = self.object_list
+            if request.GET['status']:
+                q = q.filter(status=request.GET['status'])
+            if request.GET['executor']:
+                q = q.filter(executor=request.GET['executor'])
+            if request.GET['label']:
+                q = q.filter(labels=request.GET['label'])
+            self.object_list = q
+
+        context = self.get_context_data()
+        return self.render_to_response(context)
 
 
 class CreateTask(SuccessMessageMixin, LoginRequired, CreateView):
