@@ -20,6 +20,10 @@
                     </div>
                 </div>
             {% endfor %}
+            <div class="form-group">
+                <label for="id_self_tasks">УПЭКЧ</label>
+                <div class="ml-2 mr-3"><input type="checkbox" name="self_tasks" class="form-control" id="id_self_tasks" {% if checked %}checked{% endif %}></div>
+            </div>
             <div class="">
                 <input class="btn btn-primary" type="submit" value="Button">
             </div>

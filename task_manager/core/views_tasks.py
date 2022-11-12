@@ -29,6 +29,11 @@ class TasksList(LoginRequired, ListView):
                 q = q.filter(executor=request.GET['executor'])
             if request.GET['label']:
                 q = q.filter(labels=request.GET['label'])
+            if 'self_tasks' in request.GET:
+                q = q.filter(author=request.user.id)
+                self.extra_context['checked'] = True
+            else:
+                self.extra_context['checked'] = False
             self.object_list = q
 
         context = self.get_context_data()

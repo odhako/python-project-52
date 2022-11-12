@@ -63,4 +63,3 @@ class TaskFilter(NoLabelSuffixMixin, FormControlMixin, forms.Form):
     status = forms.ModelChoiceField(queryset=Status.objects.all(), required=False)
     executor = forms.ModelChoiceField(queryset=User.objects.all(), required=False)
     label = forms.ModelChoiceField(queryset=Label.objects.all(), required=False)
-    self_tasks = forms.CheckboxInput()
