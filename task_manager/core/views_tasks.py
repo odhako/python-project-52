@@ -20,13 +20,13 @@ class TasksList(LoginRequired, TemplateView):
 
         # Filter:
         if request.GET:
-            if request.GET['status']:
+            if 'status' in request.GET and request.GET['status'] != '':
                 q = q.filter(status=request.GET['status'])
-            if request.GET['executor']:
+            if 'executor' in request.GET and request.GET['executor'] != '':
                 q = q.filter(executor=request.GET['executor'])
-            if request.GET['label']:
+            if 'label' in request.GET and request.GET['label'] != '':
                 q = q.filter(labels=request.GET['label'])
-            if 'self_tasks' in request.GET:
+            if 'self_tasks' in request.GET and request.GET['self_tasks']:
                 q = q.filter(author=request.user.id)
 
         context = self.get_context_data()
