@@ -32,13 +32,6 @@ IS_HEROKU = "DYNO" in os.environ
 load_dotenv()
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-# if 'SECRET_KEY' in os.environ:
-#     SECRET_KEY = os.environ["SECRET_KEY"]
-
-# SECURITY WARNING: don't run with debug turned on in production!
-# if not IS_HEROKU:
-#     DEBUG = True
-
 DEBUG = True
 
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
@@ -76,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -189,6 +183,9 @@ BOOTSTRAP4 = {
     "theme_url": '/static/starter-template.css'
 }
 
-# BOOTSTRAP4 = {
-#     "theme_url": 'https://getbootstrap.com/docs/4.5/examples/starter-template/starter-template.css'
-# }
+ROLLBAR = {
+    'access_token': os.environ['POST_SERVER_ITEM_ACCESS_TOKEN'],
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': '1.0',
+    'root': BASE_DIR,
+}
