@@ -23,12 +23,16 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        POST_SERVER_ITEM_ACCESS_TOKEN: ${{ secrets.POST_SERVER_ITEM_ACCESS_TOKEN }}
         GITHUB_ACTION_RUNNING: True
       run: |
         coverage run --source='.' manage.py test
     - name: Publish code coverage
       uses: paambaati/codeclimate-action@v3.1.1
       env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
         GITHUB_ACTION_RUNNING: True
       with:
         coverageCommand: coverage xml
