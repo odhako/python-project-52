@@ -208,3 +208,43 @@ class TestDeleting(TestCase):
         labels = Label.objects.all()
         self.assertTrue(labels)
         print('Label is not deleting when in use: OK')
+
+
+class TestFilter(TestCase):
+
+    def setUp(self):
+        self.client.post(
+            '/users/create/',
+            data={
+                'first_name': 'Odhako',
+                'last_name': 'Default',
+                'username': 'odhako',
+                'password1': 'default',
+                'password2': 'default',
+            }
+        )
+
+        self.client.login(username='odhako', password='default')
+        self.client.post('/statuses/create/', data={'name': 'Status 001'})
+        self.client.post('/labels/create/', data={'name': 'Label 002'})
+        self.client.post('/labels/create/', data={'name': 'Label 003'})
+        self.client.post(
+            '/tasks/create/',
+            data={'name': 'Task with 002', 'status': 1, 'labels': [1, ]}
+        )
+        self.client.post(
+            '/tasks/create/',
+            data={'name': 'Task with 003', 'status': 1, 'labels': [2, ]}
+        )
+
+    def test_filter(self):
+        response = self.client.get('/tasks/?status=&executor=&label=1')
+        self.assertEqual(response.context['tasks'][0].name, 'Task with 002')
+        print('Filtering with querystring: OK')
+
+        response = self.client.get(
+            '/tasks/',
+            data={'status': '', 'executor': '', 'label': '1'}
+        )
+        self.assertEqual(response.context['tasks'][0].name, 'Task with 002')
+        print('Filtering with form: OK')
