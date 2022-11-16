@@ -50,7 +50,7 @@ class UsersView(ListView):
 class CreateUserView(SuccessMessageMixin, CreateView):
     template_name = 'create.html'
     form_class = UserForm
-    success_url = '/'
+    success_url = '/login/'
     success_message = _("User successfully registered")
     extra_context = {
         'header': _('Registration'),
