@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-16 08:20+0000\n"
+"POT-Creation-Date: 2022-11-16 11:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,48 +157,48 @@ msgctxt "Delete status button"
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: task_manager/core/views_tasks.py:43
+#: task_manager/core/views_tasks.py:42
 msgid "Task successfully created"
 msgstr "Задача успешно создана"
 
-#: task_manager/core/views_tasks.py:45
+#: task_manager/core/views_tasks.py:44
 msgctxt "Create task page header"
 msgid "Create task"
 msgstr "Создать задачу"
 
-#: task_manager/core/views_tasks.py:46
+#: task_manager/core/views_tasks.py:45
 msgctxt "Create task button"
 msgid "Create"
 msgstr "Создать"
 
-#: task_manager/core/views_tasks.py:59
+#: task_manager/core/views_tasks.py:58
 msgid "Task successfully updated"
 msgstr "Задача успешно изменена"
 
-#: task_manager/core/views_tasks.py:61
+#: task_manager/core/views_tasks.py:60
 msgctxt "Update task page header"
 msgid "Update task"
 msgstr "Изменение задачи"
 
-#: task_manager/core/views_tasks.py:62
+#: task_manager/core/views_tasks.py:61
 msgctxt "Update task button"
 msgid "Update"
 msgstr "Изменить"
 
-#: task_manager/core/views_tasks.py:70
+#: task_manager/core/views_tasks.py:69
 msgid "Task successfully deleted"
 msgstr "Задача успешно удалена"
 
-#: task_manager/core/views_tasks.py:71
+#: task_manager/core/views_tasks.py:70
 msgid "Only author of the task can delete it"
 msgstr "Задачу может удалить только её автор"
 
-#: task_manager/core/views_tasks.py:73
+#: task_manager/core/views_tasks.py:72
 msgctxt "Delete task page header"
 msgid "Delete task"
 msgstr "Удаление задачи"
 
-#: task_manager/core/views_tasks.py:74
+#: task_manager/core/views_tasks.py:73
 msgctxt "Delete task button"
 msgid "Yes, delete"
 msgstr "Да, удалить"
@@ -233,14 +233,17 @@ msgid "Tasks"
 msgstr "Задачи"
 
 #: task_manager/templates/application.html:42
+msgctxt "Navbar link"
 msgid "Log out"
 msgstr "Выход"
 
 #: task_manager/templates/application.html:46
+msgctxt "Navbar link"
 msgid "Log in"
 msgstr "Вход"
 
 #: task_manager/templates/application.html:49
+msgctxt "Navbar link"
 msgid "Sign up"
 msgstr "Регистрация"
 
