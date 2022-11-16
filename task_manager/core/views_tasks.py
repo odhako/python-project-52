@@ -3,26 +3,23 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext as _, pgettext
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from django.views.generic import DetailView
+from django.views.generic import DetailView, TemplateView
 
 from task_manager.core.forms import TaskForm, TaskFilter
 from task_manager.core.models import Task
 from task_manager.core.views import LoginRequired
 
 
-class TasksList(LoginRequired, ListView):
+class TasksList(LoginRequired, TemplateView):
     template_name = 'tasks_list.html'
-    context_object_name = 'tasks'
-    object_list = Task.objects.only('id', 'name', 'status', 'author',
-                                    'executor', 'created')
-    extra_context = {'task_filter': TaskFilter()}
 
     def get(self, request, *args, **kwargs):
+        task_filter = TaskFilter(request.GET or None)
+        q = Task.objects.only('id', 'name', 'status', 'author',
+                                    'executor', 'created')
 
+        # Filter:
         if request.GET:
-            for key, value in request.GET.items():
-                print(key, value)
-            q = self.object_list
             if request.GET['status']:
                 q = q.filter(status=request.GET['status'])
             if request.GET['executor']:
@@ -31,12 +28,10 @@ class TasksList(LoginRequired, ListView):
                 q = q.filter(labels=request.GET['label'])
             if 'self_tasks' in request.GET:
                 q = q.filter(author=request.user.id)
-                self.extra_context['checked'] = True
-            else:
-                self.extra_context['checked'] = False
-            self.object_list = q
 
         context = self.get_context_data()
+        context['task_filter'] = task_filter
+        context['tasks'] = q
         return self.render_to_response(context)
 
 
