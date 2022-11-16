@@ -20,7 +20,7 @@ class StatusesTest(TestCase):
         self.client.login(username='user_666', password='password_666')
 
     def test_crud_status(self):
-        self.client.post('/statuses/create/', data={'name': 'Burned in hell',})
+        self.client.post('/statuses/create/', data={'name': 'Burned in hell'})
         status = Status.objects.get(name='Burned in hell')
         self.assertEqual(status.name, 'Burned in hell')
         print('Status create: OK')
@@ -148,7 +148,7 @@ class LabelsTest(TestCase):
         self.client.login(username='user_777', password='password_777')
 
     def test_crud_label(self):
-        self.client.post('/labels/create/', data={'name': 'TODO',})
+        self.client.post('/labels/create/', data={'name': 'TODO'})
         label = Label.objects.get(name='TODO')
         self.assertEqual(label.name, 'TODO')
         print('Label create: OK')

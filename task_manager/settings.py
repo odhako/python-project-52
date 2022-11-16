@@ -11,9 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from django.test.runner import DiscoverRunner
 import os
-import dj_database_url
 from dotenv import load_dotenv
 
 
@@ -32,7 +30,10 @@ SECRET_KEY = os.environ["SECRET_KEY"] if "SECRET_KEY" in os.environ else 'non_em
 DEBUG = True
 
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
-ALLOWED_HOSTS = ['webserver', '127.0.0.1',]
+ALLOWED_HOSTS = [
+    'webserver',
+    '127.0.0.1',
+]
 
 # Application definition
 
