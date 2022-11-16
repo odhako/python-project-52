@@ -184,7 +184,7 @@ BOOTSTRAP4 = {
 }
 
 ROLLBAR = {
-    'access_token': os.environ['POST_SERVER_ITEM_ACCESS_TOKEN'],
+    'access_token': os.environ['POST_SERVER_ITEM_ACCESS_TOKEN'] or 'non_empty_key',
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
