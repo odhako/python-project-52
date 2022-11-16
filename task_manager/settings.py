@@ -30,7 +30,7 @@ IS_HEROKU = "DYNO" in os.environ
 
 # SECURITY WARNING: keep the secret key used in production secret!
 load_dotenv()
-SECRET_KEY = os.environ["SECRET_KEY"] if os.environ["SECRET_KEY"] else 'non_empty_key'
+SECRET_KEY = os.environ["SECRET_KEY"] if "SECRET_KEY" in os.environ else 'non_empty_key'
 
 DEBUG = True
 
@@ -184,7 +184,7 @@ BOOTSTRAP4 = {
 }
 
 
-if os.environ['POST_SERVER_ITEM_ACCESS_TOKEN']:
+if 'POST_SERVER_ITEM_ACCESS_TOKEN' in os.environ:
     ROLLBAR_KEY = os.environ['POST_SERVER_ITEM_ACCESS_TOKEN']
 else:
     ROLLBAR_KEY = 'non_empty_key'
