@@ -24,6 +24,7 @@ jobs:
     - name: Run Tests
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        POST_SERVER_ITEM_ACCESS_TOKEN: ${{ secrets.POST_SERVER_ITEM_ACCESS_TOKEN }}
         GITHUB_ACTION_RUNNING: True
       run: |
         coverage run --source='.' manage.py test
