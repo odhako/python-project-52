@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-16 11:38+0000\n"
+"POT-Creation-Date: 2022-11-16 12:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,6 +60,10 @@ msgstr "Статус"
 #: task_manager/core/models.py:48
 msgid "Executor"
 msgstr "Исполнитель"
+
+#: task_manager/core/models.py:55
+msgid "Labels"
+msgstr "Метки"
 
 #: task_manager/core/views.py:8 task_manager/users/views.py:17
 msgid "You are not authorised! Please log in."

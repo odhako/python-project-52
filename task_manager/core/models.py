@@ -51,7 +51,8 @@ class Task(TimeStampedModel):
                                  null=True)
 
     labels = models.ManyToManyField(Label,
-                                    blank=True)
+                                    blank=True,
+                                    verbose_name=_('Labels'))
 
     def __str__(self):
         return self.name
