@@ -5,6 +5,12 @@ from django import forms
 from django.utils.translation import gettext as _, pgettext
 
 
+class UserModelChoiceField(forms.ModelChoiceField):
+
+    def label_from_instance(self, obj):
+        return obj.get_full_name()
+
+
 class StatusForm(ModelForm):
     class Meta:
         model = Status
@@ -16,6 +22,7 @@ class TaskForm(ModelForm):
     class Meta:
         model = Task
         fields = ['name', 'description', 'status', 'executor', 'labels']
+        field_classes = {'executor': UserModelChoiceField}
 
 
 class LabelForm(ModelForm):
@@ -31,7 +38,7 @@ class TaskFilter(forms.Form):
         required=False,
         label=pgettext('Status filter', 'Status')
     )
-    executor = forms.ModelChoiceField(
+    executor = UserModelChoiceField(
         queryset=User.objects.all(),
         required=False,
         label=pgettext('Executor filter', 'Executor')
