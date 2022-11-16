@@ -183,9 +183,14 @@ BOOTSTRAP4 = {
     "theme_url": '/static/starter-template.css'
 }
 
+
+if os.environ['POST_SERVER_ITEM_ACCESS_TOKEN']:
+    ROLLBAR_KEY = os.environ['POST_SERVER_ITEM_ACCESS_TOKEN']
+else:
+    ROLLBAR_KEY = 'non_empty_key'
+
 ROLLBAR = {
-    'access_token': os.environ['POST_SERVER_ITEM_ACCESS_TOKEN']
-    if os.environ['POST_SERVER_ITEM_ACCESS_TOKEN'] else 'non_empty_key',
+    'access_token': ROLLBAR_KEY,
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
