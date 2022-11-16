@@ -1,4 +1,5 @@
 {% extends 'application.html' %}
+{% load bootstrap4 %}
 {% load i18n %}
 
 {% block header %}
@@ -12,21 +13,10 @@
 <div class="card mb-3">
     <div class="card-body bg-light">
         <form class="form-inline center" method="get">
-            {% for field in task_filter %}
-                <div class="form-group">
-                    {{ field.label_tag }}
-                    <div class="ml-2 mr-3">
-                        {{ field }}
-                    </div>
-                </div>
-            {% endfor %}
-            <div class="form-group">
-                <label for="id_self_tasks">УПЭКЧ</label>
-                <div class="ml-2 mr-3"><input type="checkbox" name="self_tasks" class="form-control" id="id_self_tasks" {% if checked %}checked{% endif %}></div>
-            </div>
-            <div class="">
-                <input class="btn btn-primary" type="submit" value="Button">
-            </div>
+            {% bootstrap_form task_filter field_class='ml-2 mr-3' %}
+            {% buttons %}
+                <input class="btn btn-primary" type="submit" value="{% translate 'Show' context 'Task filter button' %}">
+            {% endbuttons %}
         </form>
     </div>
 </div>
