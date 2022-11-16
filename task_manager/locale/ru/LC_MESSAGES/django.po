@@ -454,7 +454,7 @@ msgstr "Вход"
 #: task_manager/users/views.py:88
 msgctxt "Login page button"
 msgid "Log in"
-msgstr "Вход"
+msgstr "Войти"
 
 #: task_manager/users/views.py:97
 msgid "You are logged out"
