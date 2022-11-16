@@ -62,7 +62,7 @@ class UpdateUserView(BasicPermissionsMixin, SuccessMessageMixin, UpdateView):
     model = User
     template_name = 'create.html'
     form_class = UserForm
-    success_url = '/'
+    success_url = '/users/'
     success_message = _("User successfully updated")
     extra_context = {
         'header': _('Update user'),
