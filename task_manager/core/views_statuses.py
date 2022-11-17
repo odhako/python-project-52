@@ -10,13 +10,13 @@ from task_manager.core.views import LoginRequired
 
 
 class StatusesList(LoginRequired, ListView):
-    template_name = 'statuses_list.html'
+    template_name = 'list_statuses.html'
     context_object_name = 'statuses'
     queryset = Status.objects.only('id', 'name', 'created',)
 
 
 class CreateStatus(SuccessMessageMixin, LoginRequired, CreateView):
-    template_name = 'create.html'
+    template_name = 'form_default.html'
     form_class = StatusForm
     success_url = '/statuses/'
     success_message = _("Status successfully created")
@@ -27,7 +27,7 @@ class CreateStatus(SuccessMessageMixin, LoginRequired, CreateView):
 
 
 class UpdateStatus(SuccessMessageMixin, LoginRequired, UpdateView):
-    template_name = 'create.html'
+    template_name = 'form_default.html'
     form_class = StatusForm
     model = Status
     success_url = '/statuses/'
@@ -39,7 +39,7 @@ class UpdateStatus(SuccessMessageMixin, LoginRequired, UpdateView):
 
 
 class DeleteStatus(SuccessMessageMixin, LoginRequired, DeleteView):
-    template_name = 'delete.html'
+    template_name = 'delete_default.html'
     model = Status
     success_url = '/statuses/'
     success_message = _('Status successfully deleted')

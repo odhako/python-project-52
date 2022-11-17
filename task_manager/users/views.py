@@ -44,11 +44,11 @@ class UsersView(ListView):
         'first_name',
         'last_name',
         'date_joined')
-    template_name = 'users.html'
+    template_name = 'list_users.html'
 
 
 class CreateUserView(SuccessMessageMixin, CreateView):
-    template_name = 'create.html'
+    template_name = 'form_default.html'
     form_class = UserForm
     success_url = '/login/'
     success_message = _("User successfully registered")
@@ -60,7 +60,7 @@ class CreateUserView(SuccessMessageMixin, CreateView):
 
 class UpdateUserView(BasicPermissionsMixin, SuccessMessageMixin, UpdateView):
     model = User
-    template_name = 'create.html'
+    template_name = 'form_default.html'
     form_class = UserForm
     success_url = '/users/'
     success_message = _("User successfully updated")
@@ -78,7 +78,7 @@ class DeleteUserView(BasicPermissionsMixin, SuccessMessageMixin, DeleteView):
 
 
 class LoginUserView(SuccessMessageMixin, LoginView):
-    template_name = 'login.html'
+    template_name = 'form_default.html'
     form_class = UserLoginForm
     next_page = '/'
     redirect_authenticated_user = False

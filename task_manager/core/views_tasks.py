@@ -11,7 +11,7 @@ from task_manager.core.views import LoginRequired
 
 
 class TasksList(LoginRequired, TemplateView):
-    template_name = 'tasks_list.html'
+    template_name = 'list_tasks.html'
 
     def get(self, request, *args, **kwargs):
         task_filter = TaskFilter(request.GET or None)
@@ -36,7 +36,7 @@ class TasksList(LoginRequired, TemplateView):
 
 
 class CreateTask(SuccessMessageMixin, LoginRequired, CreateView):
-    template_name = 'create.html'
+    template_name = 'form_default.html'
     form_class = TaskForm
     success_url = '/tasks/'
     success_message = _("Task successfully created")
@@ -51,7 +51,7 @@ class CreateTask(SuccessMessageMixin, LoginRequired, CreateView):
 
 
 class UpdateTask(SuccessMessageMixin, LoginRequired, UpdateView):
-    template_name = 'create.html'
+    template_name = 'form_default.html'
     form_class = TaskForm
     model = Task
     success_url = '/tasks/'
@@ -63,7 +63,7 @@ class UpdateTask(SuccessMessageMixin, LoginRequired, UpdateView):
 
 
 class DeleteTask(SuccessMessageMixin, LoginRequired, DeleteView):
-    template_name = 'delete.html'
+    template_name = 'delete_default.html'
     model = Task
     success_url = '/tasks/'
     success_message = _('Task successfully deleted')

@@ -10,13 +10,13 @@ from task_manager.core.views import LoginRequired
 
 
 class LabelsList(LoginRequired, ListView):
-    template_name = 'labels_list.html'
+    template_name = 'list_labels.html'
     context_object_name = 'labels'
     queryset = Label.objects.only('id', 'name', 'created')
 
 
 class CreateLabel(SuccessMessageMixin, LoginRequired, CreateView):
-    template_name = 'create.html'
+    template_name = 'form_default.html'
     form_class = LabelForm
     success_url = '/labels/'
     success_message = _('Label successfully created')
@@ -27,7 +27,7 @@ class CreateLabel(SuccessMessageMixin, LoginRequired, CreateView):
 
 
 class UpdateLabel(SuccessMessageMixin, LoginRequired, UpdateView):
-    template_name = 'create.html'
+    template_name = 'form_default.html'
     form_class = LabelForm
     model = Label
     success_url = '/labels/'
@@ -39,7 +39,7 @@ class UpdateLabel(SuccessMessageMixin, LoginRequired, UpdateView):
 
 
 class DeleteLabel(SuccessMessageMixin, LoginRequired, DeleteView):
-    template_name = 'delete.html'
+    template_name = 'delete_default.html'
     model = Label
     success_url = '/labels/'
     success_message = _('Label successfully deleted')
