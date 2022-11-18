@@ -174,3 +174,8 @@ ROLLBAR = {
     'code_version': '1.0',
     'root': BASE_DIR,
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://task-manager-by-odhako.up.railway.app',
+    'https://*.127.0.0.1',
+]
