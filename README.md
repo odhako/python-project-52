@@ -6,4 +6,4 @@
 
 ### Work in progress
 
-https://task-manager-by-odhako.herokuapp.com/
+https://task-manager-by-odhako.up.railway.app/
