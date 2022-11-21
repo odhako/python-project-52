@@ -11,8 +11,7 @@ from task_manager.core.views import LoginRequired
 
 class StatusesList(LoginRequired, ListView):
     template_name = 'list_statuses.html'
-    context_object_name = 'statuses'
-    queryset = Status.objects.only('id', 'name', 'created',)
+    model = Status
 
 
 class CreateStatus(SuccessMessageMixin, LoginRequired, CreateView):

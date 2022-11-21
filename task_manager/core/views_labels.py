@@ -11,8 +11,7 @@ from task_manager.core.views import LoginRequired
 
 class LabelsList(LoginRequired, ListView):
     template_name = 'list_labels.html'
-    context_object_name = 'labels'
-    queryset = Label.objects.only('id', 'name', 'created')
+    model = Label
 
 
 class CreateLabel(SuccessMessageMixin, LoginRequired, CreateView):
