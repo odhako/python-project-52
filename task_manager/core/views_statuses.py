@@ -4,7 +4,6 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect
 from django.contrib import messages
 
-from task_manager.core.forms import StatusForm
 from task_manager.core.models import Status
 from task_manager.core.views import LoginRequired
 
@@ -16,7 +15,8 @@ class StatusesList(LoginRequired, ListView):
 
 class CreateStatus(SuccessMessageMixin, LoginRequired, CreateView):
     template_name = 'form_default.html'
-    form_class = StatusForm
+    model = Status
+    fields = ['name', ]
     success_url = '/statuses/'
     success_message = _("Status successfully created")
     extra_context = {
@@ -27,8 +27,8 @@ class CreateStatus(SuccessMessageMixin, LoginRequired, CreateView):
 
 class UpdateStatus(SuccessMessageMixin, LoginRequired, UpdateView):
     template_name = 'form_default.html'
-    form_class = StatusForm
     model = Status
+    fields = ['name', ]
     success_url = '/statuses/'
     success_message = _("Status successfully updated")
     extra_context = {

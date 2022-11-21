@@ -4,7 +4,6 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect
 from django.contrib import messages
 
-from task_manager.core.forms import LabelForm
 from task_manager.core.models import Label
 from task_manager.core.views import LoginRequired
 
@@ -16,7 +15,8 @@ class LabelsList(LoginRequired, ListView):
 
 class CreateLabel(SuccessMessageMixin, LoginRequired, CreateView):
     template_name = 'form_default.html'
-    form_class = LabelForm
+    model = Label
+    fields = ['name', ]
     success_url = '/labels/'
     success_message = _('Label successfully created')
     extra_context = {
@@ -27,8 +27,8 @@ class CreateLabel(SuccessMessageMixin, LoginRequired, CreateView):
 
 class UpdateLabel(SuccessMessageMixin, LoginRequired, UpdateView):
     template_name = 'form_default.html'
-    form_class = LabelForm
     model = Label
+    fields = ['name', ]
     success_url = '/labels/'
     success_message = _("Label successfully updated")
     extra_context = {

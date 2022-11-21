@@ -11,25 +11,12 @@ class UserModelChoiceField(forms.ModelChoiceField):
         return obj.get_full_name()
 
 
-class StatusForm(ModelForm):
-    class Meta:
-        model = Status
-        fields = ['name', ]
-
-
 class TaskForm(ModelForm):
 
     class Meta:
         model = Task
         fields = ['name', 'description', 'status', 'executor', 'labels']
         field_classes = {'executor': UserModelChoiceField}
-
-
-class LabelForm(ModelForm):
-
-    class Meta:
-        model = Label
-        fields = ['name', ]
 
 
 class TaskFilter(forms.Form):
