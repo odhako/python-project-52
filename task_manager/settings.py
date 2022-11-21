@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 SECRET_KEY = os.environ["SECRET_KEY"] if "SECRET_KEY" in os.environ else 'non_empty_key'
 
-DEBUG = True
+DEBUG = False
 
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
 ALLOWED_HOSTS = [
@@ -113,13 +113,10 @@ if "DATABASE_URL" in os.environ and "HEXLET_ID" not in os.environ:
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    # {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
      'OPTIONS': {
          'min_length': 3,
      }},
-    # {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
-    # {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
 
 
