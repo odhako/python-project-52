@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
-from .forms import UserForm, UserLoginForm
+from task_manager.core.forms import UserForm, UserLoginForm
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _

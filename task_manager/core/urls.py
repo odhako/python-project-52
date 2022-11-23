@@ -17,8 +17,15 @@ Including another URLconf
 from django.urls import path
 
 from task_manager.core import views_tasks, views_statuses, views_labels
+from task_manager.core import views_users
 
 urlpatterns = [
+    path('users/', views_users.UsersView.as_view()),
+    path('users/create/', views_users.CreateUserView.as_view()),
+    path('users/<int:pk>/update/', views_users.UpdateUserView.as_view()),
+    path('users/<int:pk>/delete/', views_users.DeleteUserView.as_view()),
+    path('login/', views_users.LoginUserView.as_view()),
+    path('logout/', views_users.LogoutUserView.as_view()),
     path('statuses/', views_statuses.StatusesList.as_view()),
     path('statuses/create/', views_statuses.CreateStatus.as_view()),
     path('statuses/<int:pk>/update/', views_statuses.UpdateStatus.as_view()),
