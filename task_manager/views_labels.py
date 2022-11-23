@@ -4,8 +4,8 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect
 from django.contrib import messages
 
-from task_manager.core.models import Label
-from task_manager.core.views import LoginRequired
+from .models import Label
+from .views import LoginRequired
 
 
 class LabelsList(LoginRequired, ListView):

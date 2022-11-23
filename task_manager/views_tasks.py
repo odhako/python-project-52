@@ -5,9 +5,9 @@ from django.utils.translation import gettext as _, pgettext
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, TemplateView
 
-from task_manager.core.forms import TaskForm, TaskFilter
-from task_manager.core.models import Task
-from task_manager.core.views import LoginRequired
+from .forms import TaskForm, TaskFilter
+from .models import Task
+from .views import LoginRequired
 
 
 class TasksList(LoginRequired, TemplateView):

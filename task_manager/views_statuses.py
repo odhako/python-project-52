@@ -4,8 +4,8 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect
 from django.contrib import messages
 
-from task_manager.core.models import Status
-from task_manager.core.views import LoginRequired
+from .models import Status
+from .views import LoginRequired
 
 
 class StatusesList(LoginRequired, ListView):
