@@ -4,35 +4,37 @@ from django.shortcuts import redirect
 from django.utils.translation import gettext as _, pgettext
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, TemplateView
+from django_filters.views import FilterView
 
-from .forms import TaskForm, TaskFilter
+from .forms import TaskForm
 from .models import Task
 from .views import LoginRequired
+from .filters import TaskFilter
 
 
-class TasksList(LoginRequired, TemplateView):
-    template_name = 'list_tasks.html'
-
-    def get(self, request, *args, **kwargs):
-        task_filter = TaskFilter(request.GET or None)
-        q = Task.objects.only('id', 'name', 'status', 'author',
-                                    'executor', 'created')
-
-        # Filter:
-        if request.GET:
-            if 'status' in request.GET and request.GET['status'] != '':
-                q = q.filter(status=request.GET['status'])
-            if 'executor' in request.GET and request.GET['executor'] != '':
-                q = q.filter(executor=request.GET['executor'])
-            if 'label' in request.GET and request.GET['label'] != '':
-                q = q.filter(labels=request.GET['label'])
-            if 'self_tasks' in request.GET and request.GET['self_tasks']:
-                q = q.filter(author=request.user.id)
-
-        context = self.get_context_data()
-        context['task_filter'] = task_filter
-        context['tasks'] = q
-        return self.render_to_response(context)
+# class TasksList(LoginRequired, TemplateView):
+#     template_name = 'list_tasks.html'
+#
+#     def get(self, request, *args, **kwargs):
+#         task_filter = TaskFilter(request.GET or None)
+#         q = Task.objects.only('id', 'name', 'status', 'author',
+#                                     'executor', 'created')
+#
+#         # Filter:
+#         if request.GET:
+#             if 'status' in request.GET and request.GET['status'] != '':
+#                 q = q.filter(status=request.GET['status'])
+#             if 'executor' in request.GET and request.GET['executor'] != '':
+#                 q = q.filter(executor=request.GET['executor'])
+#             if 'label' in request.GET and request.GET['label'] != '':
+#                 q = q.filter(labels=request.GET['label'])
+#             if 'self_tasks' in request.GET and request.GET['self_tasks']:
+#                 q = q.filter(author=request.user.id)
+#
+#         context = self.get_context_data()
+#         context['filter'] = task_filter
+#         context['tasks'] = q
+#         return self.render_to_response(context)
 
 
 class CreateTask(SuccessMessageMixin, LoginRequired, CreateView):
@@ -90,3 +92,10 @@ class TaskView(DetailView):
 
     def get_object(self, queryset=None):
         return Task.objects.get(id=self.kwargs['pk'])
+
+
+class TasksList(LoginRequired, FilterView):
+    template_name = 'list_tasks.html'
+    queryset = Task.objects.all()
+    context_object_name = 'tasks'
+    filterset_class = TaskFilter
