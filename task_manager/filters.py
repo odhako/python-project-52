@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import pgettext
 from django import forms
 
-from .models import Task, Status, Label
+from .models import Status, Label
 
 
 class UserModelChoiceField(forms.ModelChoiceField):
