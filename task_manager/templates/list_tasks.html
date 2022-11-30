@@ -13,7 +13,7 @@
 <div class="card mb-3">
     <div class="card-body bg-light">
         <form class="form-inline center" method="get">
-            {% bootstrap_form task_filter field_class='ml-2 mr-3' %}
+            {% bootstrap_form filter.form field_class='ml-2 mr-3' %}
             {% buttons %}
                 <input class="btn btn-primary" type="submit" value="{% translate 'Show' context 'Task filter button' %}">
             {% endbuttons %}

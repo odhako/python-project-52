@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 SECRET_KEY = os.environ["SECRET_KEY"] if "SECRET_KEY" in os.environ else 'non_empty_key'
 
-DEBUG = False
+DEBUG = True
 
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
 ALLOWED_HOSTS = [
@@ -48,9 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'bootstrap4',
+    'django_filters',
     'task_manager',
-    'task_manager.users',
-    'task_manager.core',
 ]
 
 MIDDLEWARE = [
