@@ -29,12 +29,12 @@ class TaskFilter(django_filters.FilterSet):
         label=pgettext('Label filter', 'Label'),
         field_name='labels',
     )
-    # self_tasks = django_filters.BooleanFilter(
-    #     label=pgettext('Self tasks filter', 'Self tasks'),
-    #     widget=forms.CheckboxInput,
-    #     # field_name='author',
-    # )
+    self_tasks = django_filters.BooleanFilter(
+        label=pgettext('Self tasks filter', 'Self tasks'),
+        widget=forms.CheckboxInput,
+        method='self_tasks_filter'
+    )
 
-    # class Meta:
-    #     model = Task
-    #     fields = ['status', 'executor', 'label', 'self_tasks']
+    def self_tasks_filter(self, queryset, name, value):
+        user = self.request.user
+        return queryset.filter(author=user)
