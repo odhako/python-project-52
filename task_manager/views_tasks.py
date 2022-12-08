@@ -57,7 +57,7 @@ class DeleteTask(SuccessMessageMixin, LoginRequired, DeleteView):
         'button': pgettext('Delete task button', 'Yes, delete'),
     }
 
-    def get(self, request, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         task_to_delete = Task.objects.get(id=self.kwargs['pk'])
         if request.user.id != task_to_delete.author.id:
             messages.add_message(request,
@@ -65,7 +65,7 @@ class DeleteTask(SuccessMessageMixin, LoginRequired, DeleteView):
                                  self.permission_denied_message)
             return redirect('/tasks/')
         else:
-            return super().get(self, request, *args, **kwargs)
+            return LoginRequired.dispatch(self, request, *args, **kwargs)
 
 
 class TaskView(DetailView):
