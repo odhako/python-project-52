@@ -1,14 +1,13 @@
-from django.contrib.auth.models import User
-from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect
-from .forms import UserForm, UserLoginForm
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.utils.translation import gettext as _
-from django.utils.translation import pgettext
+from django.shortcuts import redirect
+from django.utils.translation import gettext as _, pgettext
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+
+from task_manager.forms import UserForm, UserLoginForm
 
 
 class BasicPermissionsMixin(LoginRequiredMixin):
