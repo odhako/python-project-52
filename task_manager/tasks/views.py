@@ -2,14 +2,13 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext as _, pgettext
-from django.views.generic import CreateView, UpdateView, DeleteView
-from django.views.generic import DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django_filters.views import FilterView
 
-from .forms import TaskForm
-from .models import Task
-from .views import LoginRequired
-from .filters import TaskFilter
+from task_manager.filters import TaskFilter
+from task_manager.forms import TaskForm
+from task_manager.models import Task
+from task_manager.views import LoginRequired
 
 
 class TasksList(LoginRequired, FilterView):
@@ -57,15 +56,15 @@ class DeleteTask(SuccessMessageMixin, LoginRequired, DeleteView):
         'button': pgettext('Delete task button', 'Yes, delete'),
     }
 
-    def get(self, request, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         task_to_delete = Task.objects.get(id=self.kwargs['pk'])
         if request.user.id != task_to_delete.author.id:
             messages.add_message(request,
-                                 messages.WARNING,
+                                 messages.ERROR,
                                  self.permission_denied_message)
             return redirect('/tasks/')
         else:
-            return super().get(self, request, *args, **kwargs)
+            return LoginRequired.dispatch(self, request, *args, **kwargs)
 
 
 class TaskView(DetailView):

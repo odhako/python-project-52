@@ -1,11 +1,11 @@
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.utils.translation import gettext as _, pgettext
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from django.shortcuts import redirect
-from django.contrib import messages
 
-from .models import Label
-from .views import LoginRequired
+from task_manager.models import Label
+from task_manager.views import LoginRequired
 
 
 class LabelsList(LoginRequired, ListView):
