@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from task_manager.tasks.models import Task
+from task_manager.models import Task
 
 
 class UserModelChoiceField(forms.ModelChoiceField):

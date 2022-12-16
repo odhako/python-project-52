@@ -1,7 +1,7 @@
-from task_manager.users.models import User
 from django.db import models
 from django.utils.translation import gettext as _
 from django_extensions.db.models import TimeStampedModel
+from django.contrib.auth.models import User
 
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
