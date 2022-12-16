@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 from django.utils.translation import pgettext
 from django_filters import ModelChoiceFilter
 
-from task_manager.models import Status, Label
+from task_manager.models import Label
+from task_manager.statuses.models import Status
 
 
 class UserModelChoiceField(forms.ModelChoiceField):

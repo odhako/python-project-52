@@ -1,6 +1,7 @@
 from django.test import TestCase, Client
 
-from task_manager.models import Label, Status
+from task_manager.models import Label
+from task_manager.statuses.models import Status
 
 
 class LabelsTest(TestCase):
