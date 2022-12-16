@@ -37,16 +37,16 @@ class Task(TimeStampedModel):
     author = models.ForeignKey(User,
                                related_name='task_author',
                                verbose_name=_('Author'),
-                               on_delete=models.RESTRICT)
+                               on_delete=models.CASCADE)
 
     status = models.ForeignKey(Status,
                                verbose_name=_('Status'),
-                               on_delete=models.RESTRICT)
+                               on_delete=models.CASCADE)
 
     executor = models.ForeignKey(User,
                                  related_name='task_executor',
                                  verbose_name=_('Executor'),
-                                 on_delete=models.RESTRICT,
+                                 on_delete=models.CASCADE,
                                  blank=True,
                                  null=True)
 
