@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.utils.translation import gettext as _, pgettext
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from task_manager.models import Label
+from task_manager.labels.models import Label
 from task_manager.views import LoginRequired
 
 

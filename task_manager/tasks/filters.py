@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import pgettext
 from django_filters import ModelChoiceFilter
 
-from task_manager.models import Label
+from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
 
 
