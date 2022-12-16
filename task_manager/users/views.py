@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from django.utils.translation import gettext as _, pgettext
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from task_manager.forms import UserForm, UserLoginForm
+from task_manager.users.forms import UserForm, UserLoginForm
 
 
 class BasicPermissionsMixin(LoginRequiredMixin):

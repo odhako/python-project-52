@@ -5,8 +5,8 @@ from django.utils.translation import gettext as _, pgettext
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django_filters.views import FilterView
 
-from task_manager.filters import TaskFilter
-from task_manager.forms import TaskForm
+from task_manager.tasks.filters import TaskFilter
+from task_manager.tasks.forms import TaskForm
 from task_manager.models import Task
 from task_manager.views import LoginRequired
 
