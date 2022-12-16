@@ -1,6 +1,6 @@
 import django_filters
 from django import forms
-from task_manager.users.models import User
+from django.contrib.auth.models import User
 from django.utils.translation import pgettext
 from django_filters import ModelChoiceFilter
 
