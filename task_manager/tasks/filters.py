@@ -1,10 +1,10 @@
 import django_filters
-from django_filters.filters import ModelChoiceFilter
+from django import forms
 from django.contrib.auth.models import User
 from django.utils.translation import pgettext
-from django import forms
+from django_filters import ModelChoiceFilter
 
-from .models import Status, Label
+from task_manager.models import Status, Label
 
 
 class UserModelChoiceField(forms.ModelChoiceField):
