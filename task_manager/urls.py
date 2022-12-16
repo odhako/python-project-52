@@ -16,10 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-import task_manager.labels.views
-import task_manager.statuses.views
-import task_manager.tasks.views
-import task_manager.users.views
 from task_manager import views
 
 from .users import urls as users
