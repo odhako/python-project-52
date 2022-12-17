@@ -158,7 +158,7 @@ BOOTSTRAP4 = {
     "theme_url": '/static/starter-template.css'
 }
 
-ROLLBAR_KEY = os.getenv('POST_SERVER_ITEM_ACCESS_TOKEN')
+ROLLBAR_KEY = os.environ.get('POST_SERVER_ITEM_ACCESS_TOKEN')
 
 ROLLBAR = {
     'access_token': ROLLBAR_KEY,
