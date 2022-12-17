@@ -98,14 +98,8 @@ DATABASES = {
     }
 }
 
-if "DATABASE_URL" in os.environ and "HEXLET_ID" not in os.environ:
-    # Configure Django for DATABASE_URL environment variable.
-    DATABASES["default"] = dj_database_url.config(
-        conn_max_age=MAX_CONN_AGE, ssl_require=False)
-
-    # Enable test database if found in CI environment.
-    if "CI" in os.environ:
-        DATABASES["default"]["TEST"] = DATABASES["default"]
+if "DATABASE_URL" in os.environ:
+    DATABASES["default"] = dj_database_url.config(conn_max_age=MAX_CONN_AGE)
 
 
 # Password validation
