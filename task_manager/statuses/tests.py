@@ -1,6 +1,4 @@
 from django.test import TestCase, Client
-
-# Create your tests here.
 from task_manager.statuses.models import Status
 
 
@@ -40,3 +38,37 @@ class StatusesTest(TestCase):
         response = c.get('/statuses/', follow=True)
         self.assertRedirects(response, '/login/?next=/statuses/')
         print('Redirect unauthorised from /statuses/: OK')
+
+
+class TestDeleting(TestCase):
+
+    def setUp(self):
+        self.client.post(
+            '/users/create/',
+            data={
+                'first_name': 'Odhako',
+                'last_name': 'Default',
+                'username': 'odhako',
+                'password1': 'default',
+                'password2': 'default',
+            }
+        )
+
+        self.client.login(username='odhako', password='default')
+        self.client.post('/statuses/create/', data={'name': 'Status 001'})
+        self.client.post('/labels/create/', data={'name': 'Label 002'})
+        self.client.post(
+            '/tasks/create/',
+            data={
+                'name': 'task 13',
+                'status': 1,
+                'labels': [1, ]
+            }
+        )
+
+    def test_cant_delete(self):
+        status = Status.objects.get(name='Status 001')
+        self.client.post(f'/statuses/{status.id}/delete/')
+        statuses = Status.objects.all()
+        self.assertTrue(statuses)
+        print('Status is not deleting when in use: OK')
