@@ -2,14 +2,13 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext as _, pgettext
-from django.views.generic import CreateView, UpdateView, DeleteView
-from django.views.generic import DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django_filters.views import FilterView
 
-from .forms import TaskForm
-from .models import Task
-from .views import LoginRequired
-from .filters import TaskFilter
+from task_manager.tasks.filters import TaskFilter
+from task_manager.tasks.forms import TaskForm
+from task_manager.tasks.models import Task
+from task_manager.views import LoginRequired
 
 
 class TasksList(LoginRequired, FilterView):
