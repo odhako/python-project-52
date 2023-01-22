@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model, get_user
 from django.test import TestCase
 
-# Create your tests here.
+
 class RegistrationTest(TestCase):
 
     def test_crud_users(self):

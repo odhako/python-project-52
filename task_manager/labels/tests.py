@@ -1,6 +1,4 @@
 from django.test import TestCase, Client
-
-# Create your tests here.
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
 
