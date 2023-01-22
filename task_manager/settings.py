@@ -159,10 +159,7 @@ BOOTSTRAP4 = {
 }
 
 
-if 'POST_SERVER_ITEM_ACCESS_TOKEN' in os.environ:
-    ROLLBAR_KEY = os.environ['POST_SERVER_ITEM_ACCESS_TOKEN']
-else:
-    ROLLBAR_KEY = 'non_empty_key'
+ROLLBAR_KEY = os.environ.get('POST_SERVER_ITEM_ACCESS_TOKEN')
 
 ROLLBAR = {
     'access_token': ROLLBAR_KEY,
