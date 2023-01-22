@@ -1,12 +1,12 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-
-from .models import Task
-from .labels.models import Label
-from .statuses.models import Status
+from django import forms
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from django import forms
 from django.utils.translation import pgettext
+
+from task_manager.labels.models import Label
+from task_manager.statuses.models import Status
+
+from task_manager.tasks.models import Task
 
 
 class UserModelChoiceField(forms.ModelChoiceField):
@@ -44,19 +44,3 @@ class TaskFilter(forms.Form):
         required=False,
         label=pgettext('Self tasks filter', 'Self tasks')
     )
-
-
-class UserForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = (
-            'first_name',
-            'last_name',
-            'username',
-            'password1',
-            'password2',
-        )
-
-
-class UserLoginForm(AuthenticationForm):
-    pass
