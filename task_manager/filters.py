@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import pgettext
 from django import forms
 
-from .models import Label
+from .labels.models import Label
 from .statuses.models import Status
 
 

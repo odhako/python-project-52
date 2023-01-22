@@ -3,17 +3,8 @@ from django.utils.translation import gettext as _
 from django_extensions.db.models import TimeStampedModel
 from django.contrib.auth.models import User
 
+from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
-
-
-class Label(TimeStampedModel):
-    name = models.CharField(verbose_name=_('Name'),
-                            max_length=100,
-                            unique=True,
-                            null=False)
-
-    def __str__(self):
-        return self.name
 
 
 class Task(TimeStampedModel):

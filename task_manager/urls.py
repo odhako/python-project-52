@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+import task_manager.labels.views
 import task_manager.statuses.views
 import task_manager.users.views
 from task_manager import views
@@ -39,8 +40,8 @@ urlpatterns = [
     path('tasks/<int:pk>/update/', views_tasks.UpdateTask.as_view()),
     path('tasks/<int:pk>/delete/', views_tasks.DeleteTask.as_view()),
     path('tasks/<int:pk>/', views_tasks.TaskView.as_view()),
-    path('labels/', views_labels.LabelsList.as_view()),
-    path('labels/create/', views_labels.CreateLabel.as_view()),
-    path('labels/<int:pk>/update/', views_labels.UpdateLabel.as_view()),
-    path('labels/<int:pk>/delete/', views_labels.DeleteLabel.as_view()),
+    path('labels/', task_manager.labels.views.LabelsList.as_view()),
+    path('labels/create/', task_manager.labels.views.CreateLabel.as_view()),
+    path('labels/<int:pk>/update/', task_manager.labels.views.UpdateLabel.as_view()),
+    path('labels/<int:pk>/delete/', task_manager.labels.views.DeleteLabel.as_view()),
 ]
