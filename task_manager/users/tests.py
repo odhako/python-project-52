@@ -29,12 +29,14 @@ class RegistrationTest(TestCase):
 
         users = get_user_model().objects.all()
         self.assertEqual(users.count(), 2)
+        print('Sign up OK')
 
         self.client.post(
             '/login/',
             data={'username': 'username1', 'password': 'password1'}
         )
         self.assertEqual(get_user(self.client).username, 'username1')
+        print('Login OK')
 
         users = get_user_model().objects.filter(username='username1')
         user_id = users[0].id
@@ -54,13 +56,17 @@ class RegistrationTest(TestCase):
             'diehard'
         )
 
+        print('Update user OK')
+
         self.assertEqual(get_user(self.client).username, '')
+        print('Logout after update OK')
 
         self.client.post(
             '/login/',
             data={'username': 'diehard', 'password': 'Yippee Ki-Yay'}
         )
         self.assertEqual(get_user(self.client).username, 'diehard')
+        print('Login after update OK')
 
         users = get_user_model().objects.filter(username='diehard')
         user_id = users[0].id
@@ -68,3 +74,4 @@ class RegistrationTest(TestCase):
         self.client.post(f'/users/{user_id}/delete/')
         users = get_user_model().objects.all()
         self.assertEqual(users.count(), 1)
+        print('Delete user OK')

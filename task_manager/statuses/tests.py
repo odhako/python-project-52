@@ -23,13 +23,16 @@ class StatusesTest(TestCase):
         self.client.post('/statuses/create/', data={'name': 'Burned in hell'})
         status = Status.objects.get(name='Burned in hell')
         self.assertEqual(status.name, 'Burned in hell')
+        print('Status create: OK')
 
         self.client.post(f'/statuses/{status.id}/update/', data={'name': 'Lol'})
         status = Status.objects.get(id=status.id)
         self.assertEqual(status.name, 'Lol')
+        print('Status update: OK')
 
         self.client.post(f'/statuses/{status.id}/delete/')
         self.assertFalse(Status.objects.filter(id=status.id).exists())
+        print('Status delete: OK')
 
     def test_logged_out(self):
         c = Client()
