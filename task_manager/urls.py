@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
+import task_manager.statuses.views
 from task_manager import views
-from task_manager import views_tasks, views_users, views_labels, views_statuses
+from task_manager import views_tasks, views_users, views_labels
+from task_manager.statuses import views as views_statuses
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,10 +30,10 @@ urlpatterns = [
     path('users/<int:pk>/delete/', views_users.DeleteUserView.as_view()),
     path('login/', views_users.LoginUserView.as_view()),
     path('logout/', views_users.LogoutUserView.as_view()),
-    path('statuses/', views_statuses.StatusesList.as_view()),
-    path('statuses/create/', views_statuses.CreateStatus.as_view()),
-    path('statuses/<int:pk>/update/', views_statuses.UpdateStatus.as_view()),
-    path('statuses/<int:pk>/delete/', views_statuses.DeleteStatus.as_view()),
+    path('statuses/', task_manager.statuses.views.StatusesList.as_view()),
+    path('statuses/create/', task_manager.statuses.views.CreateStatus.as_view()),
+    path('statuses/<int:pk>/update/', task_manager.statuses.views.UpdateStatus.as_view()),
+    path('statuses/<int:pk>/delete/', task_manager.statuses.views.DeleteStatus.as_view()),
     path('tasks/', views_tasks.TasksList.as_view()),
     path('tasks/create/', views_tasks.CreateTask.as_view()),
     path('tasks/<int:pk>/update/', views_tasks.UpdateTask.as_view()),

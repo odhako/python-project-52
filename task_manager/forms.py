@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
-from .models import Status, Task, Label
+from .models import Task, Label
+from .statuses.models import Status
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django import forms
