@@ -1,5 +1,5 @@
 debug:
-	poetry run python manage.py runserver
+	poetry run python manage.py runserver 127.0.0.1:8080
 
 test:
 	poetry run python manage.py test
