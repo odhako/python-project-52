@@ -17,19 +17,19 @@ from django.contrib import admin
 from django.urls import path
 
 import task_manager.statuses.views
+import task_manager.users.views
 from task_manager import views
-from task_manager import views_tasks, views_users, views_labels
-from task_manager.statuses import views as views_statuses
+from task_manager import views_tasks, views_labels
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.IndexView.as_view()),
-    path('users/', views_users.UsersView.as_view()),
-    path('users/create/', views_users.CreateUserView.as_view()),
-    path('users/<int:pk>/update/', views_users.UpdateUserView.as_view()),
-    path('users/<int:pk>/delete/', views_users.DeleteUserView.as_view()),
-    path('login/', views_users.LoginUserView.as_view()),
-    path('logout/', views_users.LogoutUserView.as_view()),
+    path('users/', task_manager.users.views.UsersView.as_view()),
+    path('users/create/', task_manager.users.views.CreateUserView.as_view()),
+    path('users/<int:pk>/update/', task_manager.users.views.UpdateUserView.as_view()),
+    path('users/<int:pk>/delete/', task_manager.users.views.DeleteUserView.as_view()),
+    path('login/', task_manager.users.views.LoginUserView.as_view()),
+    path('logout/', task_manager.users.views.LogoutUserView.as_view()),
     path('statuses/', task_manager.statuses.views.StatusesList.as_view()),
     path('statuses/create/', task_manager.statuses.views.CreateStatus.as_view()),
     path('statuses/<int:pk>/update/', task_manager.statuses.views.UpdateStatus.as_view()),
