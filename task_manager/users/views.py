@@ -20,7 +20,7 @@ class BasicPermissionsMixin(LoginRequiredMixin):
         # print('Request pk:', self.kwargs['pk'])
         if request.user.id != self.kwargs['pk']:
             messages.add_message(request,
-                                 messages.WARNING,
+                                 messages.ERROR,
                                  self.permission_denied_message)
             return redirect('/users/')
         elif request.user.id == self.kwargs['pk']:
@@ -29,7 +29,7 @@ class BasicPermissionsMixin(LoginRequiredMixin):
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             messages.add_message(request,
-                                 messages.WARNING,
+                                 messages.ERROR,
                                  self.login_required_message)
             return self.handle_no_permission()
         else:

@@ -11,7 +11,7 @@ class LoginRequired(LoginRequiredMixin):
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             messages.add_message(request,
-                                 messages.WARNING,
+                                 messages.ERROR,
                                  self.login_required_message)
             return self.handle_no_permission()
         else:

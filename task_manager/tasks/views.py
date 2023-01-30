@@ -60,7 +60,7 @@ class DeleteTask(SuccessMessageMixin, LoginRequired, DeleteView):
         task_to_delete = Task.objects.get(id=self.kwargs['pk'])
         if request.user.id != task_to_delete.author.id:
             messages.add_message(request,
-                                 messages.WARNING,
+                                 messages.ERROR,
                                  self.permission_denied_message)
             return redirect('/tasks/')
         else:

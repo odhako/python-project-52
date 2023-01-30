@@ -52,7 +52,7 @@ class DeleteLabel(SuccessMessageMixin, LoginRequired, DeleteView):
         label = Label.objects.get(id=kwargs['pk'])
         if label.task_set.all():
             messages.add_message(request,
-                                 messages.WARNING,
+                                 messages.ERROR,
                                  self.cant_delete_message)
             return redirect('/labels/')
         else:

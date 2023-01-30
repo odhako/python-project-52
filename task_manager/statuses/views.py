@@ -54,7 +54,7 @@ class DeleteStatus(SuccessMessageMixin, LoginRequired, DeleteView):
         status = Status.objects.get(id=kwargs['pk'])
         if status.task_set.all():
             messages.add_message(request,
-                                 messages.WARNING,
+                                 messages.ERROR,
                                  self.cant_delete_message)
             return redirect('/tasks/')
         else:
