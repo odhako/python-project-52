@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 SECRET_KEY = os.environ["SECRET_KEY"] if "SECRET_KEY" in os.environ else 'non_empty_key'
 
-DEBUG = os.environ["DEBUG"] if "DEBUG" in os.environ else True
+DEBUG = os.environ["DEBUG"] == 'True' if "DEBUG" in os.environ else True
 
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
 ALLOWED_HOSTS = [
