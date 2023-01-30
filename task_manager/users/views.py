@@ -74,6 +74,17 @@ class DeleteUserView(BasicPermissionsMixin, SuccessMessageMixin, DeleteView):
     template_name = 'delete_user.html'
     success_url = '/users/'
     success_message = _('User successfully deleted')
+    cant_delete_message = _("Can't delete user because it is in use")
+
+    def post(self, request, *args, **kwargs):
+        user = User.objects.get(id=kwargs['pk'])
+        if user.task_author.all() or user.task_executor.all():
+            messages.add_message(request,
+                                 messages.ERROR,
+                                 self.cant_delete_message)
+            return redirect('/users/')
+        else:
+            return super().post(self, request, *args, **kwargs)
 
 
 class LoginUserView(SuccessMessageMixin, LoginView):
